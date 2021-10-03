@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.Map;
+import java.util.List;
 
 @RestController
 @RequestMapping("/mortageCalculate")
@@ -31,7 +31,7 @@ public class IntertestCalculatorController {
 	}
 
 	@GetMapping(value = "/getAll")
-	public Map<Prospects, Integer> getMortageCalculateForAllCustomerData() {
+	public List<String> getMortageCalculateForAllCustomerData() {
 		return interestCalculateService.fetchCustomerDataAndCalculateEMI();
 	}
 }

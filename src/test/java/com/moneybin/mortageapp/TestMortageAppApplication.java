@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 
+import java.util.List;
 import java.util.Map;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -42,7 +43,7 @@ public class TestMortageAppApplication {
 
 	@Test
 	public void testEmiCalculateForAllData() {
-		Map<Prospects, Integer> mapData = intertestCalculatorController.getMortageCalculateForAllCustomerData();
-		assertEquals(4, mapData.size());
+		List<String> list = intertestCalculatorController.getMortageCalculateForAllCustomerData();
+		assertEquals(4, list.size());
 	}
 }

@@ -6,9 +6,8 @@ import com.moneybin.mortageapp.util.InterestCalculatorHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.HashMap;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 @Service
 public class InterestCalculateService {
@@ -19,14 +18,15 @@ public class InterestCalculateService {
 		return InterestCalculatorHelper.calculateEmi(data);
 	}
 
-	public Map<Prospects, Integer> fetchCustomerDataAndCalculateEMI() {
-		Map<Prospects, Integer> dataMap = new HashMap<>();
+	public List<String> fetchCustomerDataAndCalculateEMI() {
+		List<String> list = new ArrayList<>();
 		List<Prospects> customerDataList = getCustomersData();
 		for (Prospects prospects : customerDataList) {
 			int emi = calculateEmi(prospects);
-			dataMap.put(prospects, emi);
+			list.add(prospects.getCustomer()+" wants to borrow "+ prospects.getTotalLoan() + " € for a period of "
+							+ prospects.getYears() + " years and pay " + emi + " € each month");
 		}
-		return dataMap;
+		return list;
 	}
 
 	public List<Prospects> getCustomersData() {
