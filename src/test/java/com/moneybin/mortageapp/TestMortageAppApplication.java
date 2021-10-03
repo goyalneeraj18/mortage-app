@@ -1,6 +1,5 @@
 package com.moneybin.mortageapp;
 
-import com.moneybin.mortageapp.beans.Prospects;
 import com.moneybin.mortageapp.controller.HomeController;
 import com.moneybin.mortageapp.controller.IntertestCalculatorController;
 import org.junit.jupiter.api.BeforeEach;
@@ -10,7 +9,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 
 import java.util.List;
-import java.util.Map;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;

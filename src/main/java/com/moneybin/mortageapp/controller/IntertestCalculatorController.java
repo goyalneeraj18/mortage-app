@@ -30,7 +30,7 @@ public class IntertestCalculatorController {
 		return interestCalculateService.calculateEmi(data);
 	}
 
-	@GetMapping(value = "/getAll")
+	@GetMapping(value = "/customers")
 	public List<String> getMortageCalculateForAllCustomerData() {
 		return interestCalculateService.fetchCustomerDataAndCalculateEMI();
 	}

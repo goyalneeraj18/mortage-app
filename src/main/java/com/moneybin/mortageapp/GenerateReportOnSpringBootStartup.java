@@ -6,7 +6,10 @@ import com.opencsv.bean.ColumnPositionMappingStrategy;
 import com.opencsv.bean.CsvToBeanBuilder;
 import com.opencsv.exceptions.CsvException;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.core.annotation.Order;
 import org.springframework.core.io.ClassPathResource;
+import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -19,9 +22,10 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Slf4j
-public class GenerateReport {
-
-	public static void main(String[] args) {
+@Component
+public class GenerateReportOnSpringBootStartup implements CommandLineRunner {
+	@Override
+	public void run(String... args) throws Exception {
 		List<Prospects> prospectsList = new ArrayList<>();
 		PrintWriter pw = null;
 		try {
@@ -30,7 +34,8 @@ public class GenerateReport {
 			pw = new PrintWriter("output.txt", "UTF-8");
 
 			prospectsList = readAll(reader);
-			prospectsList = prospectsList.stream().filter(prospects -> prospects.getTotalLoan() != null).collect(Collectors.toList());
+			prospectsList = prospectsList.stream().filter(prospects -> prospects.getTotalLoan() != null).collect(
+					Collectors.toList());
 		} catch (IOException | CsvException e) {
 			log.error("Exception occured while reading the input file "+e.getMessage());
 			e.printStackTrace();
@@ -42,7 +47,6 @@ public class GenerateReport {
 		}
 		pw.close();
 	}
-
 	public static List<Prospects> readAll(Reader reader) throws IOException, CsvException {
 		ColumnPositionMappingStrategy strategy = new ColumnPositionMappingStrategy();
 		strategy.setType(Prospects.class);
