@@ -4,25 +4,34 @@ A Java application to calculate mortage
 This is a spring boot application which is created for a customer as well as for Money Bin inc to generate the report for all its customer by file as well as 
 from the database.
 
-Steps to compile & Package.
+<h2>Steps to compile & Package </h2>
 1. Once you clone the repo locally.
-2.  mvn clean package
+2. mvn clean package
 3.  To run the spring boot app <b>mvn spring-boot:run</b>
 
-There are some end point is exposed to use
-GET request localhost:8080/mortageCalculate/customer?
-with some requestparams
-customerName
-totalloan
-interest
-years
+Once the spring boot application is started, There is a Runner file <i>GenerateReportOnSpringBootStartup.java</i> which will start run with input file prospects.txt which is present in resource/static folder and generate output.txt similar lines for all customers
 
-Get request localhost:8080/mortageCalculate/getAll (This will fetch the the map object for all the data from Prospects table in database and respective emi for customers.
+"CustomerName wants to borrow X € for a period of Z years and pay E € each month"
 
 
-There is a file which will read the file prospects.txt from resource folder and generate the desired out for Money bin CEO.
 
-<b>com.moneybin.mortageapp.GenerateReport.java </b>
+<h2>Spring Boot REST End point details</h2>
 
-To generate report
-<b>./generate-output-with-emi.sh</b>
+<ol>
+  <li>
+http://localhost:8080/mortageCalculate/customer?            GET          customerName , totalloan , interest , years
+  </li>
+  <li>
+    http://localhost:8080/mortageCalculate/customers         GET   
+    This will read all the data from prospects table from database and will result like this
+    [
+    "Juha wants to borrow 1000.0 € for a period of 2 years and pay 44 € each month",
+    "Karvinen wants to borrow 4356.0 € for a period of 6 years and pay 63 € each month",
+    "Claes Månsson wants to borrow 1300.55 € for a period of 2 years and pay 59 € each month",
+    "Clarencé,Andersson wants to borrow 2000.0 € for a period of 4 years and pay 47 € each month"
+]
+  </li>
+  </ol>
+ 
+ <h2>>Database Details </h2>
+ Currently i have configured the h2 in memory database used for actual DB connection. It can be changed according to your local database.
