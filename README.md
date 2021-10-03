@@ -38,3 +38,9 @@ http://localhost:8080/mortageCalculate/customer?            GET          custome
  
  <h2>>Database Details </h2>
  Currently i have configured the h2 in memory database used for actual DB connection. It can be changed according to your local database.
+ 
+ <h2>Webapp for Customer to check EMI</h2>
+ 
+ http://localhost:8080/
+ ![image](https://user-images.githubusercontent.com/12641617/135754595-db1de5ac-0640-4a21-9ddd-21733fbf37b2.png)
+
