@@ -5,11 +5,14 @@ This is a spring boot application which is created for a customer as well as for
 from the database.
 
 <h2>Steps to compile & Package </h2>
-1. Once you clone the repo locally.
-2. mvn clean package
-3.  To run the spring boot app <b>mvn spring-boot:run</b>
+<ol>
+  <li>Once you clone the repo locally</li>
+  <li>mvn clean install or mvn clean package</li>
+  <li>To Start application mvn spring-boot:run </li>
+</ol>
 
-Once the spring boot application is started, There is a Runner file <i>GenerateReportOnSpringBootStartup.java</i> which will start run with input file prospects.txt which is present in resource/static folder and generate output.txt similar lines for all customers
+Once the spring boot application is started, 
+There is a Runner file <i>GenerateReportOnSpringBootStartup.java</i> which will start run with input file prospects.txt which is present in resource/static folder and generate output.txt similar lines for all customers
 
 "CustomerName wants to borrow X € for a period of Z years and pay E € each month"
 
