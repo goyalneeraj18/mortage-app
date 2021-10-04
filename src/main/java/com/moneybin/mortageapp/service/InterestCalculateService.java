@@ -14,7 +14,7 @@ public class InterestCalculateService {
 	@Autowired
 	private InterestCalculateRepository repository;
 
-	public int calculateEmi(Prospects data) {
+	public String calculateEmi(Prospects data) {
 		return InterestCalculatorHelper.calculateEmi(data);
 	}
 
@@ -22,7 +22,7 @@ public class InterestCalculateService {
 		List<String> list = new ArrayList<>();
 		List<Prospects> customerDataList = getCustomersData();
 		for (Prospects prospects : customerDataList) {
-			int emi = calculateEmi(prospects);
+			String emi = calculateEmi(prospects);
 			list.add(prospects.getCustomer()+" wants to borrow "+ prospects.getTotalLoan() + " € for a period of "
 							+ prospects.getYears() + " years and pay " + emi + " € each month");
 		}

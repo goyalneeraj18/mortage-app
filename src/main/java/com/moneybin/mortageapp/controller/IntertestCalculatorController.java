@@ -20,7 +20,7 @@ public class IntertestCalculatorController {
 	private Prospects data;
 
 	@GetMapping("/customer")
-	public int calculateEMIForACustomer(@RequestParam("customerName") String customer,
+	public String calculateEMIForACustomer(@RequestParam("customerName") String customer,
 			@RequestParam("totalloan") Double totalLoan, @RequestParam("interest") Double interest,
 			@RequestParam("years") int years) {
 		data.setCustomer(customer);

@@ -41,7 +41,7 @@ public class GenerateReportOnSpringBootStartup implements CommandLineRunner {
 			e.printStackTrace();
 		}
 		for (Prospects prospects : prospectsList) {
-			int emi = InterestCalculatorHelper.calculateEmi(prospects);
+			String emi = InterestCalculatorHelper.calculateEmi(prospects);
 			pw.println(prospects.getCustomer() + " wants to borrow " + prospects.getTotalLoan() + " € for a period of "
 					+ prospects.getYears() + " years and pay " + emi + " € each month");
 		}

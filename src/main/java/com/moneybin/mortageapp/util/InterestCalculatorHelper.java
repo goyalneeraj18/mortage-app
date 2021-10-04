@@ -3,13 +3,13 @@ package com.moneybin.mortageapp.util;
 import com.moneybin.mortageapp.beans.Prospects;
 
 public class InterestCalculatorHelper {
-	public static int calculateEmi(Prospects data) {
+	public static String calculateEmi(Prospects data) {
 		Double emi;
 		Double rate = data.getInterest() / (12 * 100);
 		Double time = Double.valueOf(data.getYears() * 12);
 		Double principle = data.getTotalLoan();
 		emi = principle * (rate * power(1 + rate, time)) / (power(1 + rate, time) - 1);
-		return (int) Math.round(emi);
+		return String.format("%.2f",emi);
 	}
 
 	private static Double power(double d, double n) {

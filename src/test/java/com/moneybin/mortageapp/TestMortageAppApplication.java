@@ -35,8 +35,8 @@ public class TestMortageAppApplication {
 
 	@Test
 	public void testEmiCalculateForCustomer() {
-		int emi = intertestCalculatorController.calculateEMIForACustomer("test_customer", 10000.0, 24.0, 1);
-		assertEquals(946, emi, "EMI is not calculated correctly");
+		String emi = intertestCalculatorController.calculateEMIForACustomer("test_customer", 10000.0, 24.0, 1);
+		assertEquals("945.60", emi, "EMI is not calculated correctly");
 	}
 
 	@Test
