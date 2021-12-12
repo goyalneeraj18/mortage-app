@@ -12,8 +12,8 @@ env:
   PROJECT_NAME: mypublicproject
   REPO_NAME_APP: mortage-app
   KAAS_DEPLOYMENT_APP: mortage-app--deployment
-  JAVA_VERSION: 11
-  MAVEN_VERSION: 3.5.4
+  JAVA_VERSION: 8
+  MAVEN_VERSION: 3.8.2
 
 jobs:
   build:
@@ -26,8 +26,10 @@ jobs:
       uses: actions/setup-java@v2
       with:
         java-version: ${{ env.JAVA_VERSION }}
-        distribution: 'adopt'
-        cache: maven
+    - name: Set up Maven
+      uses: stCarolas/setup-maven@v4.2
+      with:
+        maven-version: ${{ env.MAVEN_VERSION }}
     - name: Build with Maven
       run: mvn -B package --file pom.xml
     - name: Login in Docker hub
